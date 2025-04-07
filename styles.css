@@ -22,3 +22,14 @@ li {
     display: flex;
     justify-content: space-between;
 }
+body {
+    background-image: url('https://imgur.com/IYl2fvw');
+    background-size: cover;         /* Makes it fill the whole screen */
+    background-position: center;    /* Keeps it centered */
+    background-repeat: no-repeat;   /* No tiling */
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: white;                   /* Change text color if background is dark */
+}
