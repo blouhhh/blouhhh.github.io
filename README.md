@@ -12,7 +12,7 @@
         }
         
         body {
-            background-image: url('/api/placeholder/1200/800');
+            background-image: url('18208.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
