@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,6 +6,16 @@
     <title>My Book List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <header>
+        <h1>My Book List</h1>
+        <nav>
+            <ul>
+                <li><a href="#read">Read</a></li>
+                <li><a href="#want-to-read">Want to Read</a></li>
+                <li><a href="#dropped">Dropped</a></li>
+            </ul>
+        </nav>
     </header>
     
     <section id="read">
