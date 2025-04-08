@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<div class="header">
+  <a href="https://blouhhh.github.io/">Konata's Boyfriend</a>
+</div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
