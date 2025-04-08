@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Collection</title>
+    <title>Book Collection - Windows XP Style</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto Mono', 'Courier New', monospace;
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
         }
         
         body {
-            background-image: url('/api/placeholder/1200/800');
+            background-image: url('18208.jpg');
+            background-color: #236B8E; /* WinXP blue background */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -26,62 +27,73 @@
             padding: 20px;
         }
         
-        /* Tabs styling */
+        /* Tabs styling - Windows XP style */
         .tabs {
             display: flex;
-            background-color: #333333;
+            background-color: #ECE9D8; /* WinXP default window color */
             overflow: hidden;
             margin-bottom: 20px;
+            border: 1px solid #0054E3;
+            border-radius: 3px 3px 0 0;
         }
         
         .tab-button {
-            background-color: transparent;
+            background: linear-gradient(to bottom, #EBF4FA 0%, #D5E8F8 45%, #D5E8F8 55%, #CEE5F6 100%);
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 20px 0;
+            padding: 10px 20px;
             flex: 1;
-            font-size: 24px;
+            font-size: 12px;
             font-weight: bold;
-            color: white;
-            transition: background-color 0.3s ease;
-            letter-spacing: 1px;
+            color: #0046D5;
+            transition: all 0.3s ease;
+            border-right: 1px solid #B5CAE7;
+            border-bottom: 1px solid #B5CAE7;
         }
         
         .tab-button.active {
-            box-shadow: inset 0 0 0 4px #999999;
+            background: linear-gradient(to bottom, #FEFEFE 0%, #ECF6FD 45%, #D0E8FB 55%, #D0E8FB 100%);
+            color: #000000;
+            border-bottom: none;
         }
         
-        .tab-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .tab-button:hover:not(.active) {
+            background: linear-gradient(to bottom, #FEFEFE 0%, #ECF6FD 45%, #D0E8FB 55%, #D0E8FB 100%);
+            color: #0054E3;
         }
         
         /* Tab content */
         .tab-content {
             display: none;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: #FFFFFF;
             min-height: calc(100vh - 140px);
             padding: 20px;
+            border: 1px solid #7A98AF;
+            border-top: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
         
         .tab-content.active {
             display: block;
         }
         
-        /* Book cards */
+        /* Book cards - Windows XP style */
         .books-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
         
         .book-card {
-            background-color: #666666;
+            background-color: #ECE9D8;
             width: 220px;
-            padding: 15px;
+            padding: 12px;
             border-radius: 3px;
             display: flex;
-            color: white;
+            color: #000000;
+            border: 1px solid #ACA899;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
         
         .book-info {
@@ -90,30 +102,73 @@
         
         .book-title {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 14px;
             margin-bottom: 5px;
+            color: #0046D5;
         }
         
         .book-author {
-            color: #dddddd;
-            font-size: 14px;
+            color: #333333;
+            font-size: 12px;
         }
         
         .book-image {
             width: 80px;
             height: 100px;
-            background-color: #444444;
+            background-color: #FFFFFF;
             margin-left: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #aaaaaa;
+            color: #666666;
+            border: 1px solid #ACA899;
+        }
+        
+        /* Windows XP-style title bar */
+        .window-header {
+            background: linear-gradient(to right, #0A246A, #3A6EA5);
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .window-title {
+            flex-grow: 1;
+        }
+        
+        .window-buttons {
+            display: flex;
+        }
+        
+        .window-button {
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: black;
+            background-color: #ECE9D8;
+            border: 1px solid #FFFFFF;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <!-- Windows XP style title bar -->
+        <div class="window-header">
+            <div class="window-title">Book Collection</div>
+            <div class="window-buttons">
+                <div class="window-button">_</div>
+                <div class="window-button">□</div>
+                <div class="window-button">×</div>
+            </div>
+        </div>
+        
         <!-- Tab navigation -->
         <div class="tabs">
             <button class="tab-button active" onclick="openTab('completed')">Completed</button>
