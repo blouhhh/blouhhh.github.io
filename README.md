@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,7 @@
         }
         
         body {
-            background-image: url('18208.jpg');
+            background-image: url('/api/placeholder/1200/800');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -108,99 +109,6 @@
             justify-content: center;
             color: #aaaaaa;
         }
-        
-        /* Add book form */
-        .add-book-form {
-            background-color: #555555;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            color: white;
-        }
-        
-        .form-group {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #777777;
-            background-color: #444444;
-            color: white;
-            font-family: 'Roboto Mono', 'Courier New', monospace;
-        }
-        
-        .form-button {
-            background-color: #333333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            align-self: flex-end;
-            font-family: 'Roboto Mono', 'Courier New', monospace;
-        }
-        
-        .form-button:hover {
-            background-color: #222222;
-        }
-        
-        .upload-button {
-            background-color: #444444;
-            color: white;
-            border: none;
-            padding: 8px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 5px;
-            font-family: 'Roboto Mono', 'Courier New', monospace;
-        }
-        
-        .delete-button {
-            background-color: #444444;
-            color: white;
-            border: none;
-            padding: 3px 8px;
-            font-size: 12px;
-            cursor: pointer;
-            display: block;
-            margin-top: 10px;
-            font-family: 'Roboto Mono', 'Courier New', monospace;
-        }
-        
-        /* Custom file input */
-        .file-input-container {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-        
-        .file-input {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-        }
-        
-        #file-name {
-            color: #bbbbbb;
-            font-size: 12px;
-            display: block;
-            margin-top: 5px;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -211,35 +119,6 @@
             <button class="tab-button active" onclick="openTab('completed')">Completed</button>
             <button class="tab-button" onclick="openTab('to-read')">To Read</button>
             <button class="tab-button" onclick="openTab('dropped')">Dropped</button>
-        </div>
-        
-        <!-- Add book form -->
-        <div class="add-book-form">
-            <div class="form-group">
-                <label for="book-title">Book Title</label>
-                <input type="text" id="book-title" placeholder="Enter book title">
-            </div>
-            <div class="form-group">
-                <label for="book-author">Author</label>
-                <input type="text" id="book-author" placeholder="Enter author name">
-            </div>
-            <div class="form-group">
-                <label for="book-category">Category</label>
-                <select id="book-category">
-                    <option value="completed">Completed</option>
-                    <option value="to-read">To Read</option>
-                    <option value="dropped">Dropped</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="book-image">Book Cover (Optional)</label>
-                <div class="file-input-container">
-                    <button class="upload-button">Choose Image</button>
-                    <input type="file" id="book-image" class="file-input" accept="image/*">
-                </div>
-                <span id="file-name">No file chosen</span>
-            </div>
-            <button class="form-button" onclick="addBook()">Add Book</button>
         </div>
         
         <!-- Tab content -->
@@ -263,31 +142,28 @@
     </div>
 
     <script>
-        // Sample data to start with
-        const sampleBooks = {
+        // Book data - Edit this section to add, modify or remove books
+        const myBooks = {
             completed: [
-                { title: "To Kill a Mockingbird", author: "Harper Lee", image: null },
-                { title: "1984", author: "George Orwell", image: null }
+                { title: "To Kill a Mockingbird", author: "Harper Lee", imageUrl: null },
+                { title: "1984", author: "George Orwell", imageUrl: null },
+                { title: "The Catcher in the Rye", author: "J.D. Salinger", imageUrl: null }
             ],
             toRead: [
-                { title: "The Great Gatsby", author: "F. Scott Fitzgerald", image: null },
-                { title: "Brave New World", author: "Aldous Huxley", image: null }
+                { title: "The Great Gatsby", author: "F. Scott Fitzgerald", imageUrl: null },
+                { title: "Brave New World", author: "Aldous Huxley", imageUrl: null },
+                { title: "The Hobbit", author: "J.R.R. Tolkien", imageUrl: null }
             ],
             dropped: [
-                { title: "Ulysses", author: "James Joyce", image: null }
+                { title: "Ulysses", author: "James Joyce", imageUrl: null },
+                { title: "War and Peace", author: "Leo Tolstoy", imageUrl: null }
             ]
         };
 
         // Initialize when the page loads
         window.onload = function() {
-            // Handle file input display
-            document.getElementById('book-image').addEventListener('change', function() {
-                const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
-                document.getElementById('file-name').textContent = fileName;
-            });
-            
-            // Load books from localStorage or use sample books
-            loadBooks();
+            // Display books in their respective tabs
+            displayBooks();
             
             // Show the active tab
             openTab('completed');
@@ -317,42 +193,32 @@
             }
         }
 
-        // Add a new book
-        function addBook() {
-            const title = document.getElementById('book-title').value.trim();
-            const author = document.getElementById('book-author').value.trim();
-            const category = document.getElementById('book-category').value;
-            const fileInput = document.getElementById('book-image');
-            let imageDataUrl = null;
+        // Display books from the data object
+        function displayBooks() {
+            // Display completed books
+            const completedContainer = document.getElementById('completed-books');
+            myBooks.completed.forEach(book => {
+                const bookCard = createBookCard(book.title, book.author, book.imageUrl);
+                completedContainer.appendChild(bookCard);
+            });
             
-            if (!title) {
-                alert('Please enter a book title');
-                return;
-            }
+            // Display to-read books
+            const toReadContainer = document.getElementById('to-read-books');
+            myBooks.toRead.forEach(book => {
+                const bookCard = createBookCard(book.title, book.author, book.imageUrl);
+                toReadContainer.appendChild(bookCard);
+            });
             
-            // If there's a file, read it as data URL
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imageDataUrl = e.target.result;
-                    createBookCard(title, author, category, imageDataUrl);
-                    saveBooks();
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                createBookCard(title, author, category, null);
-                saveBooks();
-            }
-            
-            // Clear the form
-            document.getElementById('book-title').value = '';
-            document.getElementById('book-author').value = '';
-            document.getElementById('file-name').textContent = 'No file chosen';
-            fileInput.value = '';
+            // Display dropped books
+            const droppedContainer = document.getElementById('dropped-books');
+            myBooks.dropped.forEach(book => {
+                const bookCard = createBookCard(book.title, book.author, book.imageUrl);
+                droppedContainer.appendChild(bookCard);
+            });
         }
 
-        // Create a book card and add it to the appropriate container
-        function createBookCard(title, author, category, imageDataUrl) {
+        // Create a book card element
+        function createBookCard(title, author, imageUrl) {
             const bookCard = document.createElement('div');
             bookCard.className = 'book-card';
             
@@ -367,24 +233,15 @@
             bookAuthor.className = 'book-author';
             bookAuthor.textContent = author;
             
-            const deleteButton = document.createElement('button');
-            deleteButton.className = 'delete-button';
-            deleteButton.textContent = 'Remove';
-            deleteButton.onclick = function() {
-                bookCard.remove();
-                saveBooks();
-            };
-            
             bookInfo.appendChild(bookTitle);
             bookInfo.appendChild(bookAuthor);
-            bookInfo.appendChild(deleteButton);
             
             const bookImage = document.createElement('div');
             bookImage.className = 'book-image';
             
-            if (imageDataUrl) {
+            if (imageUrl) {
                 const img = document.createElement('img');
-                img.src = imageDataUrl;
+                img.src = imageUrl;
                 img.style.maxWidth = '100%';
                 img.style.maxHeight = '100%';
                 bookImage.appendChild(img);
@@ -395,72 +252,7 @@
             bookCard.appendChild(bookInfo);
             bookCard.appendChild(bookImage);
             
-            // Get the appropriate container and add the book card
-            const containerId = category === 'to-read' ? 'to-read-books' :
-                              category === 'dropped' ? 'dropped-books' : 'completed-books';
-            document.getElementById(containerId).appendChild(bookCard);
-        }
-
-        // Save books to localStorage
-        function saveBooks() {
-            const books = {
-                completed: getBooksFromContainer('completed-books'),
-                toRead: getBooksFromContainer('to-read-books'),
-                dropped: getBooksFromContainer('dropped-books')
-            };
-            
-            localStorage.setItem('myBookList', JSON.stringify(books));
-        }
-
-        // Get books from a container
-        function getBooksFromContainer(containerId) {
-            const container = document.getElementById(containerId);
-            const bookCards = container.getElementsByClassName('book-card');
-            const books = [];
-            
-            for (let i = 0; i < bookCards.length; i++) {
-                const card = bookCards[i];
-                const title = card.querySelector('.book-title').textContent;
-                const author = card.querySelector('.book-author').textContent;
-                let image = null;
-                
-                const img = card.querySelector('.book-image img');
-                if (img) {
-                    image = img.src;
-                }
-                
-                books.push({ title, author, image });
-            }
-            
-            return books;
-        }
-
-        // Load books from localStorage or use sample data
-        function loadBooks() {
-            let books = sampleBooks;
-            const savedBooks = localStorage.getItem('myBookList');
-            
-            if (savedBooks) {
-                books = JSON.parse(savedBooks);
-            }
-            
-            // Clear existing books
-            document.getElementById('completed-books').innerHTML = '';
-            document.getElementById('to-read-books').innerHTML = '';
-            document.getElementById('dropped-books').innerHTML = '';
-            
-            // Add books to their containers
-            books.completed.forEach(book => {
-                createBookCard(book.title, book.author, 'completed', book.image);
-            });
-            
-            books.toRead.forEach(book => {
-                createBookCard(book.title, book.author, 'to-read', book.image);
-            });
-            
-            books.dropped.forEach(book => {
-                createBookCard(book.title, book.author, 'dropped', book.image);
-            });
+            return bookCard;
         }
     </script>
 </body>
