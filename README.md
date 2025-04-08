@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
         }
         
         body {
@@ -29,7 +29,7 @@
         /* Tabs styling */
         .tabs {
             display: flex;
-            background-color: #e41c23;
+            background-color: #333333;
             overflow: hidden;
             margin-bottom: 20px;
         }
@@ -43,12 +43,13 @@
             flex: 1;
             font-size: 24px;
             font-weight: bold;
-            color: black;
+            color: white;
             transition: background-color 0.3s ease;
+            letter-spacing: 1px;
         }
         
         .tab-button.active {
-            box-shadow: inset 0 0 0 4px #ff9800;
+            box-shadow: inset 0 0 0 4px #999999;
         }
         
         .tab-button:hover {
@@ -58,7 +59,7 @@
         /* Tab content */
         .tab-content {
             display: none;
-            background-color: rgba(179, 125, 92, 0.9);
+            background-color: rgba(0, 0, 0, 0.5);
             min-height: calc(100vh - 140px);
             padding: 20px;
         }
@@ -75,11 +76,12 @@
         }
         
         .book-card {
-            background-color: #ff9248;
+            background-color: #666666;
             width: 220px;
             padding: 15px;
             border-radius: 3px;
             display: flex;
+            color: white;
         }
         
         .book-info {
@@ -93,28 +95,30 @@
         }
         
         .book-author {
-            color: white;
+            color: #dddddd;
             font-size: 14px;
         }
         
         .book-image {
             width: 80px;
             height: 100px;
-            background-color: white;
+            background-color: #444444;
             margin-left: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #aaaaaa;
         }
         
         /* Add book form */
         .add-book-form {
-            background-color: #ff9248;
+            background-color: #555555;
             padding: 20px;
             margin-bottom: 20px;
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
+            color: white;
         }
         
         .form-group {
@@ -131,35 +135,40 @@
         .form-group input, .form-group select {
             width: 100%;
             padding: 8px;
-            border: 1px solid #ccc;
+            border: 1px solid #777777;
+            background-color: #444444;
+            color: white;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
         }
         
         .form-button {
-            background-color: #e41c23;
+            background-color: #333333;
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             font-weight: bold;
             align-self: flex-end;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
         }
         
         .form-button:hover {
-            background-color: #c1121f;
+            background-color: #222222;
         }
         
         .upload-button {
-            background-color: #333;
+            background-color: #444444;
             color: white;
             border: none;
             padding: 8px;
             cursor: pointer;
             width: 100%;
             margin-top: 5px;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
         }
         
         .delete-button {
-            background-color: #e41c23;
+            background-color: #444444;
             color: white;
             border: none;
             padding: 3px 8px;
@@ -167,6 +176,7 @@
             cursor: pointer;
             display: block;
             margin-top: 10px;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
         }
         
         /* Custom file input */
@@ -185,7 +195,15 @@
             width: 100%;
             height: 100%;
         }
+        
+        #file-name {
+            color: #bbbbbb;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
