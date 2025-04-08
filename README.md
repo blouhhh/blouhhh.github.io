@@ -198,7 +198,7 @@
         // Book data - Edit this section to add, modify or remove books
         const myBooks = {
             completed: [
-                { title: "To Kill a Mockingbird", author: "Harper Lee", imageUrl: null },
+                { title: "Do Androids Dream of Electric Sheep?", author: "Philip K. Dick", imageUrl: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1507838927i/36402034.jpg },
                 { title: "1984", author: "George Orwell", imageUrl: null },
                 { title: "The Catcher in the Rye", author: "J.D. Salinger", imageUrl: null }
             ],
