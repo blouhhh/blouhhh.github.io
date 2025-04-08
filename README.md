@@ -198,7 +198,7 @@
         // Book data - Edit this section to add, modify or remove books
         const myBooks = {
             completed: [
-                { title: "Do Androids Dream of Electric Sheep?", author: "Philip K. Dick", imageUrl: null },
+                { title: "Blade Runner", author: "Philip K. Dick", imageUrl: null },
                 { title: "1984", author: "George Orwell", imageUrl: null },
                 { title: "The Catcher in the Rye", author: "J.D. Salinger", imageUrl: null }
             ],
